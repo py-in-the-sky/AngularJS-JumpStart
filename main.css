@@ -3,10 +3,19 @@
     display: none !important;
 }
 
+td {
+    padding: 4px 14px;
+}
+
 .red {
     color: red;
 }
 
 .navy {
     color: navy;
+}
+
+.clickable {
+    cursor: pointer;
+    cursor: hand;  /* some browsers call it 'hand' */
 }

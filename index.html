@@ -2,11 +2,27 @@
 <html ng-app>
 <head>
     <title>AngularJS Hello World</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
 </head>
-<body>
-    Name: <input type="text" ng-model="name" />
+<body ng-init="name='Ryan'">
+
+    <div ng-hide="isHidden">
+        Name: <input type="text" ng-model="name" />
+    </div>
+    Hide: <input type="checkbox" ng-model="isHidden" />
     <br />
-    <h1>{{ name }}</h1>
+    <button ng-click="name='Wise'">Change Name</button>
+
+    <div ng-cloak>
+        <!-- ng-cloak directive will hide element until curly brackets are evaluated and rendered by AngularJS -->
+        <!-- see ng-cloak addition to main.css -->
+        <h1>{{ name }}</h1>
+        <h1 ng-bind="name"></h1>  <!-- will achieve same effect as above h1 -->
+
+        <p>{{ 2 * 2 }}</p>
+        <p>{{ "seven__".length }}</p>
+    </div>
+
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.js"></script>
 </body>

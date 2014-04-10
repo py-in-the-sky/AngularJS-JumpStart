@@ -4,24 +4,70 @@
     <title>AngularJS Hello World</title>
     <link rel="stylesheet" type="text/css" href="main.css">
 </head>
-<body ng-init="name='Ryan'">
+<body ng-init="data={ name:'Ryan', isVisible: true, loggedIn: true, status: 'red' }">
 
+
+    <!-- swith/case statement -->
+    <div ng-cloak>
+        <div ng-switch on="data.loggedIn">
+            <div ng-switch-when="true">
+                Welcome, {{ data.name }}
+            </div>
+            <div ng-switch-default ng-class="data.status">
+                Log in:
+            </div>
+        </div>
+    </div>
+    <br />
+
+
+    <!-- some basic data binding -->
     <div ng-hide="isHidden">
-        Name: <input type="text" ng-model="name" />
+        Name: <input type="text" ng-model="data.name" />
     </div>
     Hide: <input type="checkbox" ng-model="isHidden" />
     <br />
-    <button ng-click="name='Wise'">Change Name</button>
+    <button ng-click="data.name='Wise'">Change Name</button>
 
+
+    <!-- cloaking -->
     <div ng-cloak>
         <!-- ng-cloak directive will hide element until curly brackets are evaluated and rendered by AngularJS -->
         <!-- see ng-cloak addition to main.css -->
-        <h1>{{ name }}</h1>
-        <h1 ng-bind="name"></h1>  <!-- will achieve same effect as above h1 -->
+        <h1>{{ data.name }}</h1>
+        <h1 ng-bind="data.name"></h1>  <!-- will achieve same effect as above h1 -->
 
         <p>{{ 2 * 2 }}</p>
         <p>{{ "seven__".length }}</p>
     </div>
+
+
+    <!-- iterating over iterables and filtering -->
+    <div ng-init="people=[{name:'Ryan', city:'London', date:'2014-04-10'}, {name:'Jianji', city:'Portland', date:'2014-04-10'}, {name:'Jon', city:'Portland', date:'2014-04-10'}]">
+        <h3>Iterating through data with ng-repeat</h3>
+        <ul ng-cloak>
+            <li ng-repeat="person in people">{{ person.name }}, {{ person.city }}</li>
+            <!-- <li ng-repeat="person in people">{{ person.name + ', ' + person.city }}</li> -->
+        </ul>
+        <br />
+
+        Filter: <input type="text" ng-model="personFilter.name" />
+            <!-- .name focuses filter on the name property of the model -->
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>City</th>
+                <th>Date</th>
+            </tr>
+            <tr ng-repeat="person in people | filter:personFilter | orderBy:'name'">
+                <!-- in sorted order due to filter -->
+                <td>{{ person.name }}</td>
+                <td>{{ person.city | uppercase }}</td>
+                <td>{{ person.date | date:'longDate' }}</td>
+            </tr>
+        </table>
+    </div>
+
 
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.js"></script>

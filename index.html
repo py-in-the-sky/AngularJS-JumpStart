@@ -55,11 +55,15 @@
             <!-- .name focuses filter on the name property of the model -->
         <table>
             <tr>
-                <th>Name</th>
-                <th>City</th>
-                <th>Date</th>
+                <!-- clickable column sorting -->
+                <!-- reverse=!reverse switches between ascending/descending -->
+                <!-- sortBy is the variable we've created/named in order to coordinate ng-click and ng-repeat -->
+                <!-- in later sections, we'll learn how to move the code in ng-click into the controller -->
+                <th ng-click="sortBy='name';reverse=!reverse">Name</th>
+                <th ng-click="sortBy='city';reverse=!reverse">City</th>
+                <th ng-click="sortBy='date';reverse=!reverse">Date</th>
             </tr>
-            <tr ng-repeat="person in people | filter:personFilter | orderBy:'name'">
+            <tr ng-repeat="person in people | filter:personFilter | orderBy:sortBy:reverse">
                 <!-- in sorted order due to filter -->
                 <td>{{ person.name }}</td>
                 <td>{{ person.city | uppercase }}</td>

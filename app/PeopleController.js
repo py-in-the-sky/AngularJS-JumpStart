@@ -59,7 +59,7 @@
             this.sortBy = propName;  // sortBy property used by view in ng-repeat
             this.reverse = !this.reverse;  // switch sorting order (ascending/descending)
         }
-    }
+    };
 
     // 2. tell Angular which objects are being injected, just in case minification changes the parameter names
     // order inside the list corresponds to the order of peopleController's parameters

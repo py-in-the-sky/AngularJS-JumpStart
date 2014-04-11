@@ -59,6 +59,18 @@
             this.sortBy = propName;  // sortBy property used by view in ng-repeat
             this.reverse = !this.reverse;  // switch sorting order (ascending/descending)
         }
+        this.namePrefixFilter = function(nameFilter) {
+            // see: http://stackoverflow.com/questions/16474091/angular-custom-filter-function
+
+            // var _name = nameFilter.toLowerCase() || '';
+            var _name = nameFilter === undefined ? '' : nameFilter.toLowerCase();
+            return function (obj) {
+                // obj.name and userValue are strings
+                // returns true if userValue is a prefix of obj.name, otherwise false
+                // also returns true if no value for nameFilter has been entered yet
+                return obj.name.toLowerCase().indexOf(_name) === 0;
+            }
+        }
     };
 
     // 2. tell Angular which objects are being injected, just in case minification changes the parameter names

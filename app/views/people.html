@@ -1,0 +1,27 @@
+<h3>Click on column names to sort or type in filter to search.</h3>
+
+Filter by name: <input type="text" ng-model="nameFilter" />
+<!-- .name focuses filter on the name property of the model -->
+
+<br /><br />
+<table ng-cloak>
+    <!-- ng-cloak directive hides element until AngularJS evaluates/renders curly brackets -->
+    <!-- see ng-cloak addition to main.css -->
+    <tr>
+        <!-- clickable column sorting -->
+        <th class="clickable" ng-click="ctrl.doSort('name')">Name</th>
+        <th class="clickable" ng-click="ctrl.doSort('city')">City</th>
+        <th class="clickable" ng-click="ctrl.doSort('date')">Date</th>
+        <th class="clickable" ng-click="ctrl.doSort('note')">Notes</th>
+    </tr>
+
+    <!-- iterating over iterables and filtering -->
+    <!-- in sorted order and searchable due to filters -->
+    <tr ng-repeat="person in ctrl.people | filter:ctrl.namePrefixFilter(nameFilter) | orderBy:ctrl.sortBy:ctrl.reverse">
+        <td>{{ person.name }}</td>
+        <td>{{ person.city | uppercase }}</td>
+        <td>{{ person.date | date:'longDate' }}</td>
+        <td>{{ person.note }}</td>
+    </tr>
+</table>
+<p ng-cloak>Total people: {{ ctrl.people.length }}</p>

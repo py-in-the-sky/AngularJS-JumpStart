@@ -1,3 +1,5 @@
+<h1 ng-cloak>{{ moduleSettings.modTitle }}</h1>
+
 <h3>Click on column names to sort or type in filter to search.</h3>
 
 Filter by name: <input type="text" ng-model="nameFilter" />
@@ -27,3 +29,6 @@ Filter by name: <input type="text" ng-model="nameFilter" />
     </tr>
 </table>
 <p ng-cloak>Total people: {{ people.length }}</p>
+
+<br>
+<footer>Version: {{ moduleSettings.version }}</footer>

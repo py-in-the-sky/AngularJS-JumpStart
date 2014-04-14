@@ -1,5 +1,23 @@
 (function () {
 
+    // ********** FOR AJAX
+    // var peopleFactory = function($http) {
+
+    //     var factory = {
+    //         getPeople: function () {
+    //             return $http.get('api');
+    //         },
+    //         getPerson: function (personName) {
+    //             return $http.get('api/' + personName);
+    //         }
+    //     };
+
+    //     return factory;
+    // };
+
+    // peopleFactory.$inject = ['$http'];
+    // *********************
+
     var peopleFactory = function() {
         var people = [
             {name:'Ryan', city:'London', date:'2014-04-10', note:'the best :)'},
@@ -28,5 +46,6 @@
     };
 
     angular.module('peopleModule').factory('peopleFactory', peopleFactory);
+
 
 }());

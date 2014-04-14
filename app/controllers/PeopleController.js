@@ -3,11 +3,23 @@
 (function() {  // add a controller to a module
 
     // 1. create controller
-    var peopleController = function($scope, peopleFactory, moduleSettings) {
+    var peopleController = function($scope, $log, peopleFactory, moduleSettings) {
         $scope.sortBy = 'name';  // default sort field
         $scope.reverse = false;  // default sort order
-        $scope.people = peopleFactory.getPeople();
         $scope.moduleSettings = moduleSettings;
+        $scope.people = peopleFactory.getPeople();
+
+        // ********** FOR AJAX
+        // $scope.people = null;
+
+        // peopleFactory.getPeople().
+        //     .success(function(people) {
+        //         $scope.people = people;
+        //     })
+        //     .error(function(data, status, headers, config) {
+        //         $log.log(data.error + ': ' + status);
+        //     });
+        // *********************
 
         $scope.doSort = function(propName) {  // sorting function used by view
             $scope.sortBy = propName;  // sortBy property used by view in ng-repeat
@@ -32,7 +44,7 @@
 
     // 2. tell Angular which objects are being injected, just in case minification changes the parameter names
     // order inside the list corresponds to the order of peopleController's parameters
-    peopleController.$inject = ['$scope', 'peopleFactory',  // helps us avoid problems from minification
+    peopleController.$inject = ['$scope', '$log', 'peopleFactory',  // helps us avoid problems from minification
                                 'moduleSettings'];
 
     // 3. include the controller in a module

@@ -3,7 +3,20 @@
     // 1. create controller
     var personController = function($scope, $routeParams, peopleFactory) {
         $scope.person = peopleFactory.getPerson($routeParams.personName);
+
+        // ********** FOR AJAX
+        // $scope.person = null;
+
+        // peopleFactory.getPerson($routeParams.personName).
+        //     .success(function(person) {
+        //         $scope.person = person;
+        //     })
+        //     .error(function(data, status, headers, config) {
+        //         $log.log(data.error + ': ' + status);
+        //     });
+        // *********************
     };
+
     // the interfaces for using a service vs factory are the same
     // var personController = function($scope, $routeParams, peopleService) {
     //     $scope.person = peopleService.getPerson($routeParams.personName);

@@ -45,21 +45,21 @@
 (function() {  // add a controller to a module
 
     // 1. create controller
-    var peopleController = function() {
-        this.sortBy = 'name';  // default sort field
-        this.reverse = false;  // default sort order
+    var peopleController = function($scope) {
+        $scope.sortBy = 'name';  // default sort field
+        $scope.reverse = false;  // default sort order
 
-        this.people = [
+        $scope.people = [
             {name:'Ryan', city:'London', date:'2014-04-10', note:'the best :)'},
             {name:'Jianji', city:'Portland', date:'2014-04-11', note:'tied for last :('},
             {name:'Jon', city:'Portland', date:'2014-04-12', note:'tied for last :('}
         ];
 
-        this.doSort = function(propName) {  // sorting function used by view
-            this.sortBy = propName;  // sortBy property used by view in ng-repeat
-            this.reverse = !this.reverse;  // switch sorting order (ascending/descending)
+        $scope.doSort = function(propName) {  // sorting function used by view
+            $scope.sortBy = propName;  // sortBy property used by view in ng-repeat
+            $scope.reverse = !$scope.reverse;  // switch sorting order (ascending/descending)
         }
-        this.namePrefixFilter = function(nameFilter) {
+        $scope.namePrefixFilter = function(nameFilter) {
             // see: http://stackoverflow.com/questions/16474091/angular-custom-filter-function
 
             // var _name = nameFilter.toLowerCase() || '';
@@ -75,7 +75,7 @@
 
     // 2. tell Angular which objects are being injected, just in case minification changes the parameter names
     // order inside the list corresponds to the order of peopleController's parameters
-    // peopleController.$inject = ['$http'];  // helps us avoid problems from minification
+    peopleController.$inject = ['$scope'];  // helps us avoid problems from minification
 
     // 3. include the controller in a module
     angular.module('peopleModule')

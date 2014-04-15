@@ -19,3 +19,7 @@ td {
     cursor: pointer;
     cursor: hand;  /* some browsers call it 'hand' */
 }
+
+.delete {
+    color: red;
+}

@@ -1,5 +1,5 @@
 (function() {
-    var peopleModule = angular.module('peopleModule', ['ngRoute']);
+    var peopleModule = angular.module('peopleModule', ['ngRoute', 'ngAnimate']);
     // square brackets are for listing other module dependencies
     // here we're adding a dependency, or import, of the Angular route module
 

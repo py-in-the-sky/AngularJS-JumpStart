@@ -2,14 +2,30 @@
 <html ng-app="peopleModule">
 <head>
     <title>AngularJS Hello World 2</title>
+    <!-- <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="main.css">
+    <link rel="stylesheet" type="text/css" href="animations.css">
 </head>
 <body>
+    <header>
+        <nav class="navbar navbar-default">  <!-- bootstrap classes -->
+            <ul class="nav navbar-nav">  <!-- bootstrap classes -->
+                <li><a href="#/">Home</a></li>
+                <!-- <li><a href="#/person/Jianji">Jianji</a></li>
+                <li><a href="#/person/Jon">Jon</a></li>
+                <li><a href="#/person/Ryan">Ryan</a></li> -->
+            </ul>
+        </nav>
+    </header>
 
-    <div ng-view></div>  <!-- view container -->
+    <main>
+        <div ng-view class="slide-animation"></div>  <!-- view container -->
+    </main>
 
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.js"></script>
+    <script src="angular-animate.js"></script>  <!-- Angular's animation module -->
     <script src="angular-route.js"></script>  <!-- Angular's routing module -->
     <script src="app/PeopleModule.js"></script>  <!-- load modules before all other parts of the Angular app -->
     <script src="app/services/PeopleFactory.js"></script>

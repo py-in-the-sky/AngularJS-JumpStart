@@ -8,6 +8,7 @@
         $scope.reverse = false;  // default sort order
         $scope.moduleSettings = moduleSettings;
         $scope.people = peopleFactory.getPeople();
+        $scope.deleted = [];
 
         // ********** FOR AJAX
         // $scope.people = null;
@@ -24,7 +25,7 @@
         $scope.doSort = function(propName) {  // sorting function used by view
             $scope.sortBy = propName;  // sortBy property used by view in ng-repeat
             $scope.reverse = !$scope.reverse;  // switch sorting order (ascending/descending); Boolean
-        }
+        };
         $scope.namePrefixFilter = function(nameFilter) {
             // see: http://stackoverflow.com/questions/16474091/angular-custom-filter-function
 
@@ -39,6 +40,14 @@
             // returns a function that takes an object and returns a Boolean
             // indicating whether that object should be filtered in or out
             return filter
+        };
+        $scope.deletePerson = function(personName) {
+            // stub
+        };
+        $scope.smiley = function(note) {
+            var _smiley = ':)';
+            // success and danger are Bootstrap classes
+            return note.indexOf(_smiley) >= 0 ? 'success' : 'danger';
         }
     };
 
